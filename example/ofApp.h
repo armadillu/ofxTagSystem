@@ -7,11 +7,12 @@ class ofApp : public ofBaseApp{
 
 public:
 
+	//define your custom tag categories
 	enum TAG_CATEGORIES{
 		COLORS = 0,
 		SHAPES,
 		NUM_TAG_CATEGORIES,
-		INVALID_TAG_CATEGORY = -1
+		INVALID_TAG_CATEGORY = -1 // -1 used internally to in default tag constructor!
 	};
 
 
