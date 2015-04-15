@@ -72,13 +72,13 @@ public:
 		}
 	}
 
-	void addTagForObjectInCategory(const string & objectID,const vector<Tag<C>> & tags){
+	void addTagsForObject(const string & objectID,const vector<Tag<C>> & tags){
 		if(tags.size()){
 			tagSystems[tags[0].category]->addTagsForObject(objectID, tags);
 		}
 	}
 
-	void addTagsForObjectInCategory(const string & objectID, const Tag<C> & tag){
+	void addTagForObject(const string & objectID, const Tag<C> & tag){
 		if(tag.tag.size()){
 			vector<Tag<C>> v;
 			v.push_back(tag);
