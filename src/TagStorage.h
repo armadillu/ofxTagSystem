@@ -91,7 +91,7 @@ public:
 				maxTag = it->first;
 			}
 			avg += it->second / (double)tags.size();
-			it++;
+			++it;
 		}
 		ofLogNotice() << "🍊 tag least used is \"" << minTag.tag <<"\" (" << min << ")";
 		ofLogNotice() << "🍊 tag most used is \"" << maxTag.tag <<"\" (" << max << ")";
@@ -100,8 +100,8 @@ public:
 
 
 	void printObjectsForTagList(string name, bool onlyStats = true){
-		typename map<Tag<C>, vector<string> >::iterator it = objectsByTag.begin();
 
+		typename map<Tag<C>, vector<string> >::iterator it = objectsByTag.begin();
 		ofLogNotice() << "⭐️⭐️ Objects for Tag List For \"" << name << "\" ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
 		while(it != objectsByTag.end()){
 			string t = "⭐️⭐️ ";
@@ -114,7 +114,7 @@ public:
 				}
 				ofLogNotice() << it->first.tag << ": " << t;
 			}
-			it++;
+			++it;
 		}
 		ofLogNotice() << "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
 	}

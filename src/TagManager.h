@@ -93,7 +93,7 @@ public:
 			string catName;
 			if(c < orderedCategoryNames.size()) catName = orderedCategoryNames[c];
 			it->second->printStats(catName);
-			it++;
+			++it;
 			c++;
 		}
 	}
@@ -105,7 +105,7 @@ public:
 			string catName;
 			if(c < orderedCategoryNames.size()) catName = orderedCategoryNames[c];
 			it->second->printObjectsForTagList(catName, !fullObjectList);
-			it++;
+			++it;
 			c++;
 		}
 	}
