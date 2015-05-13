@@ -119,6 +119,43 @@ public:
 		ofLogNotice() << "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
 	}
 
+	void removeObjects(const vector<string> & objectIdsToRemove){
+
+		vector<string>::const_iterator it = objectIdsToRemove.begin();
+		while( it != objectIdsToRemove.end()){
+
+			const string & thisObjectID = *it;
+			typename map<Tag<C>, vector<string> >::iterator it2 = objectsByTag.begin();
+
+			vector<Tag<C>> tagsToDelete;
+
+			while(it2 != objectsByTag.end()){
+
+				vector<string> & objs = it2->second;
+				const Tag<C> & thisTag = it2->first;
+
+				for(int i = objs.size() - 1; i >= 0 ; i--){
+
+					if (objs[i] == thisObjectID){
+						objs.erase(objs.begin() + i); //remove object from tag obj list
+						tags[thisTag]--;
+						if(tags[thisTag] <= 0){
+							tags.erase(thisTag);
+						}
+					}
+				}
+				if(objs.size() == 0){
+					tagsToDelete.push_back(thisTag);
+				}
+				++it2;
+			}
+			for(int i = 0; i < tagsToDelete.size(); i++){
+				objectsByTag.erase(tagsToDelete[i]);
+			}
+			++it;
+		}
+	}
+
 private:
 
 	//tags

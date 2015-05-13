@@ -24,7 +24,6 @@ public:
 		}
 	}
 
-
 	vector<string> getObjectsWithTagInTagCategory(const string & tag,
 												  C category,
 												  int limitTo = 0){
@@ -72,7 +71,7 @@ public:
 		}
 	}
 
-	void addTagsForObject(const string & objectID,const vector<Tag<C>> & tags){
+	void addTagsForObject(const string & objectID, const vector<Tag<C>> & tags){
 		if(tags.size()){
 			tagSystems[tags[0].category]->addTagsForObject(objectID, tags);
 		}
@@ -107,6 +106,17 @@ public:
 			it->second->printObjectsForTagList(catName, !fullObjectList);
 			++it;
 			c++;
+		}
+	}
+
+	void removeObjects(const vector<string> & objectIDsToRemove){
+
+		typename map <C, TagStorage<C>* >::iterator it = tagSystems.begin();
+		while( it != tagSystems.end() ){
+
+			TagStorage<C> & tagStorage = *it->second;
+			tagStorage.removeObjects(objectIDsToRemove);
+			++it;
 		}
 	}
 
