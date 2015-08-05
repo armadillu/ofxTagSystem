@@ -102,7 +102,11 @@ public:
 	void printObjectsForTagList(string name, bool onlyStats = true){
 
 		typename map<Tag<C>, vector<string> >::iterator it = objectsByTag.begin();
-		ofLogNotice() << "⭐️⭐️ Objects for Tag List For \"" << name << "\" ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+		if(onlyStats){
+			ofLogNotice() << "⭐️⭐️ Object Counts for Tag \"" << name << "\" ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+		}else{
+			ofLogNotice() << "⭐️⭐️ Objects for Tag List For \"" << name << "\" ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+		}
 		while(it != objectsByTag.end()){
 			string t = "⭐️⭐️ ";
 			if (onlyStats){
