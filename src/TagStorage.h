@@ -116,7 +116,7 @@ public:
 					t += it->second[i];
 					if( i != it->second.size() -1) t += ", ";
 				}
-				ofLogNotice() << it->first.tag << ": " << t;
+				ofLogNotice() << it->first.tag << ": (" << it->second.size() << ") " << t;
 			}
 			++it;
 		}
