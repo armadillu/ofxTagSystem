@@ -71,8 +71,8 @@ public:
 	}
 
 	void printStats(string name){
-		ofLogNotice() << "🍊🍊🍊🍊 Stats for \"" << name << "\" Tags 🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊🍊";
-		ofLogNotice() << "🍊 num unique tags : " << getNumTags();
+		ofLogNotice() << "++++ Stats for \"" << name << "\" Tags +++++++++++++++++++++++++++++++++++";
+		ofLogNotice() << "+ num unique tags : " << getNumTags();
 		typename map<Tag<C>, int >::iterator it = tags.begin();
 
 		int min = INT_MAX;
@@ -93,9 +93,9 @@ public:
 			avg += it->second / (double)tags.size();
 			++it;
 		}
-		ofLogNotice() << "🍊 tag least used is \"" << minTag.tag <<"\" (" << min << ")";
-		ofLogNotice() << "🍊 tag most used is \"" << maxTag.tag <<"\" (" << max << ")";
-		ofLogNotice() << "🍊 avg objects per tag is " << avg;
+		ofLogNotice() << "+ tag least used is \"" << minTag.tag <<"\" (" << min << ")";
+		ofLogNotice() << "+ tag most used is \"" << maxTag.tag <<"\" (" << max << ")";
+		ofLogNotice() << "+ avg objects per tag is " << avg;
 	}
 
 
@@ -103,12 +103,12 @@ public:
 
 		typename map<Tag<C>, vector<string> >::iterator it = objectsByTag.begin();
 		if(onlyStats){
-			ofLogNotice() << "⭐️⭐️ Object Counts for Tag \"" << name << "\" ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+			ofLogNotice() << "== Object Counts for Tag \"" << name << "\" =================================";
 		}else{
-			ofLogNotice() << "⭐️⭐️ Objects for Tag List For \"" << name << "\" ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+			ofLogNotice() << "== Objects for Tag List For \"" << name << "\" =================================";
 		}
 		while(it != objectsByTag.end()){
-			string t = "⭐️⭐️ ";
+			string t = "== ";
 			if (onlyStats){
 				ofLogNotice() << it->first.tag << ": " << it->second.size();
 			}else{
@@ -120,7 +120,7 @@ public:
 			}
 			++it;
 		}
-		ofLogNotice() << "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+		ofLogNotice() << "=================================================";
 	}
 
 	void removeObjects(const vector<string> & objectIdsToRemove){
