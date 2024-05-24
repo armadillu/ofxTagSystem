@@ -43,17 +43,19 @@ public:
 									 int limitTo = 0,
 									 bool shuffled = false){
 
+		auto rng = std::default_random_engine {};
 		vector<string> res;
+
 		if (limitTo == 0){
 			res =  tagSystems[tag.category]->getObjectIDsTaggedWith(tag);
 			if(shuffled){
-				std::random_shuffle(res.begin(), res.end());
+				std::shuffle(res.begin(), res.end(), rng);
 			}
 			return res;
 		}else{
 			res = tagSystems[tag.category]->getObjectIDsTaggedWith(tag);
 			if(shuffled){
-				std::random_shuffle(res.begin(), res.end());
+				std::shuffle(res.begin(), res.end(), rng);
 			}
 			vector<string>::const_iterator first = res.begin();
 			vector<string>::const_iterator last = res.begin() + MIN(limitTo, res.size());
